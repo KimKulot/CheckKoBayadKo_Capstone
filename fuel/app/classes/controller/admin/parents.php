@@ -3,14 +3,22 @@
 	
 class Controller_Admin_Parents extends Controller_Admin
 {
+  public function action_index()
+	    {
+	        $view = View::forge('admin/parents/index');
+	         
+	        $view->parents = Model_Parent::find('all');
+	         
+	        $this->template->title = 'Parents';
+	        $this->template->content = $view;
+	    }
+	// public function action_index()
+	// {
+	// 	$data['parents'] = Model_Parent::find('all');
+	// 	$this->template->title = "Parents";
+	// 	$this->template->content = View::forge('admin/parents/index', $data);
 
-	public function action_index()
-	{
-		$data['parents'] = Model_Parent::find('all');
-		$this->template->title = "Parents";
-		$this->template->content = View::forge('admin/parents/index', $data);
-
-	}
+	// }
 
 	public function action_view($id = null)
 	{
